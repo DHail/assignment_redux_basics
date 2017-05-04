@@ -12,7 +12,7 @@ import {
     withdrawMoney,
     depositMoney,
     transferMoney,
-    addTranaction
+    addTransaction
 }
 from "./actions";
 import {
@@ -44,7 +44,7 @@ store.dispatch(withdrawMoney({
     account: 1,
     amount: 178
 }));
-store.dispatch(addTranaction({
+store.dispatch(addTransaction({
     transactionDate: new Date(),
     originAccount: 1,
     destinationAccount: null,
@@ -56,8 +56,8 @@ store.dispatch(depositMoney({
     account: 1,
     amount: 45000
 }));
-store.dispatch(addTranaction({
-    transactionDate: new Date(),
+store.dispatch(addTransaction({
+    transactionDate: Date.parse("2017-01-05"),
     originAccount: null,
     destinationAccount: 1,
     amount: 45000
@@ -69,12 +69,23 @@ store.dispatch(transferMoney({
     destinationAccount: 2,
     amount: 500000
 }))
-store.dispatch(addTranaction({
+store.dispatch(addTransaction({
     transactionDate: new Date(),
     originAccount: 1,
     destinationAccount: 2,
     amount: 500000
 }));
+
+let startDate = Date.parse("2017-02-01")
+let endDate = Date.parse("2017-05-05")
+const allTransactions = store.getState().transactionManagement
+let filteredTransactions = allTransactions.filter( (transaction) => {
+  if(transaction.transactionDate > startDate && transaction.transactionDate < endDate) {
+    return true
+  }
+})
+console.log("Filtered Transactions", filteredTransactions)
+
 
 ReactDOM.render(
     <App />,

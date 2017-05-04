@@ -47,7 +47,7 @@ export function transferMoney(data) {
 }
 
 
-export function addTranaction(data) {
+export function addTransaction(data) {
     return {
         type: ADD_TRANSACTION,
         data
