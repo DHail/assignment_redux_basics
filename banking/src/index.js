@@ -4,7 +4,7 @@ import App from './App';
 import './index.css';
 
 import accountManagement from "./reducers"
-import { createAccount } from "./actions";
+import { createAccount, withdrawMoney, depositMoney, transferMoney } from "./actions";
 import { createStore } from "redux";
 
 
@@ -18,10 +18,30 @@ console.log("initial state", store.getState());
 
 store.dispatch(createAccount({
     name: "Jim Bob",
-    amount: 1000000
+    balance: 1000000
+}));
+
+store.dispatch(createAccount({
+    name: "Tammy Sue",
+    balance: 19
 }));
 
 
+store.dispatch(withdrawMoney({
+  account: 1,
+  amount: 178
+}));
+
+store.dispatch(depositMoney({
+  account: 1,
+  amount: 45000
+}));
+
+store.dispatch(transferMoney({
+  originAccount: 1,
+  destinationAccount: 2,
+  amount: 500000
+}))
 
 
 ReactDOM.render(

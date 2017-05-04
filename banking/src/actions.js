@@ -1,4 +1,7 @@
 export const VIEW_ACCOUNT = "VIEW_ACCOUNT";
+export const WITHDRAW_MONEY = "WITHDRAW_MONEY";
+export const DEPOSIT_MONEY = "DEPOSIT_MONEY";
+export const TRANSFER_MONEY = "TRANSFER_MONEY";
 
 //-------For testing-----//
 export const CREATE_ACCOUNT = "CREATE_ACCOUNT";
@@ -15,11 +18,30 @@ export function createAccount(data) {
     };
 }
 
-
-
 export function viewAccount(id) {
     return {
         type: VIEW_ACCOUNT,
         data: id
+    };
+}
+
+export function withdrawMoney(data) {
+    return {
+        type: WITHDRAW_MONEY,
+        data
+    };
+}
+
+export function depositMoney(data) {
+    return {
+        type: DEPOSIT_MONEY,
+        data
+    };
+}
+
+export function transferMoney(data) {
+    return {
+        type: TRANSFER_MONEY,
+        data
     };
 }
