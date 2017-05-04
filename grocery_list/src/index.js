@@ -4,11 +4,11 @@ import App from './App';
 import './index.css';
 
 
-import { addGrocery } from './actions';
-import groceryList from './reducers';
+import { addGrocery, purchaseItem, setPurchasedFilter } from './actions';
+import { groceryApp } from './reducers';
 import { createStore } from 'redux';
 
-let store = createStore(groceryList);
+let store = createStore(groceryApp);
 
 const unsubscribe = store.subscribe(() => {
     console.log(store.getState());
@@ -23,6 +23,9 @@ store.dispatch(addGrocery({
     purchased: false
 }));
 
+store.dispatch(purchaseItem(1))
+
+store.dispatch(setPurchasedFilter("SHOW_MEATIEST"))
 
 
 
