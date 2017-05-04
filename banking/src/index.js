@@ -3,12 +3,25 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 
-import accountManagement from "./reducers"
-import { createAccount, withdrawMoney, depositMoney, transferMoney } from "./actions";
-import { createStore } from "redux";
+import {
+    financeApp
+}
+from "./reducers"
+import {
+    createAccount,
+    withdrawMoney,
+    depositMoney,
+    transferMoney,
+    addTranaction
+}
+from "./actions";
+import {
+    createStore
+}
+from "redux";
 
 
-let store = createStore(accountManagement);
+let store = createStore(financeApp);
 
 const unsubscribe = store.subscribe(() => {
     console.log(store.getState());
@@ -28,23 +41,42 @@ store.dispatch(createAccount({
 
 
 store.dispatch(withdrawMoney({
-  account: 1,
-  amount: 178
+    account: 1,
+    amount: 178
 }));
+store.dispatch(addTranaction({
+    transactionDate: new Date(),
+    originAccount: 1,
+    destinationAccount: null,
+    amount: 178
+}));
+
 
 store.dispatch(depositMoney({
-  account: 1,
-  amount: 45000
+    account: 1,
+    amount: 45000
+}));
+store.dispatch(addTranaction({
+    transactionDate: new Date(),
+    originAccount: null,
+    destinationAccount: 1,
+    amount: 45000
 }));
 
-store.dispatch(transferMoney({
-  originAccount: 1,
-  destinationAccount: 2,
-  amount: 500000
-}))
 
+store.dispatch(transferMoney({
+    originAccount: 1,
+    destinationAccount: 2,
+    amount: 500000
+}))
+store.dispatch(addTranaction({
+    transactionDate: new Date(),
+    originAccount: 1,
+    destinationAccount: 2,
+    amount: 500000
+}));
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+    <App />,
+    document.getElementById('root')
 );

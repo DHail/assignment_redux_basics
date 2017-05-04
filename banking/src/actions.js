@@ -2,7 +2,7 @@ export const VIEW_ACCOUNT = "VIEW_ACCOUNT";
 export const WITHDRAW_MONEY = "WITHDRAW_MONEY";
 export const DEPOSIT_MONEY = "DEPOSIT_MONEY";
 export const TRANSFER_MONEY = "TRANSFER_MONEY";
-
+export const ADD_TRANSACTION = "ADD_TRANSACTION";
 //-------For testing-----//
 export const CREATE_ACCOUNT = "CREATE_ACCOUNT";
 //-------Testing---------//
@@ -42,6 +42,14 @@ export function depositMoney(data) {
 export function transferMoney(data) {
     return {
         type: TRANSFER_MONEY,
+        data
+    };
+}
+
+
+export function addTranaction(data) {
+    return {
+        type: ADD_TRANSACTION,
         data
     };
 }
