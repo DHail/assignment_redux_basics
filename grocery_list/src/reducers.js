@@ -5,7 +5,7 @@ from 'redux'
 
 //import constants
 import {
-    ADD_GROCERY_ITEM, SET_FILTER
+    ADD_GROCERY_ITEM, SET_FILTER, SORT_ITEMS
 }
 from "./actions";
 import {
@@ -38,15 +38,6 @@ function groceryList(state = [], action) {
     }
 }
 
-function purchasedFilter(state = "SHOW_ALL", action) {
-    switch (action.type) {
-        case SET_PURCHASED_FILTER:
-            return action.data;
-        default:
-            return state;
-    }
-}
-
 
 function setFilters(state = {
     purchased: "SHOW_ALL",
@@ -62,11 +53,19 @@ function setFilters(state = {
     }
 }
 
+function sortItems(state = "NONE", action) {
+    switch (action.type) {
+    case SORT_ITEMS:
+      return action.data
+    default:
+      return state
+  }
+}
+
 
 
 
 export const groceryApp = combineReducers({
     groceryList,
-    purchasedFilter,
     setFilters
 });

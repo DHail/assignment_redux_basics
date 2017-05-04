@@ -4,7 +4,7 @@ import App from './App';
 import './index.css';
 
 
-import { addGrocery, purchaseItem, setPurchasedFilter, setFilter } from './actions';
+import { addGrocery, purchaseItem, setFilter, sortItems } from './actions';
 import { groceryApp } from './reducers';
 import { createStore } from 'redux';
 
@@ -25,9 +25,7 @@ store.dispatch(addGrocery({
 
 store.dispatch(purchaseItem(1))
 
-store.dispatch(setPurchasedFilter("SHOW_MEATIEST"))
-
-
+store.dispatch(setFilter({type: "purchased", value: "MEATIEST"}))
 
 
 ReactDOM.render(
@@ -35,17 +33,3 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-
-
-
-// {
-    
-//  groceryList: [ { name: "whatever"} ],
-//  purchasedFilter: "SHOW_ALL",
-//  categoryFilter: "SHOW_ALL"
-//  filters: {
-//      purchased: "SHOW_ALL",
-//      category: "SHOW_ALL"
-//  }
-    
-// }
