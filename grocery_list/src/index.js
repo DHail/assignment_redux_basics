@@ -4,7 +4,7 @@ import App from './App';
 import './index.css';
 
 
-import { addGrocery, purchaseItem, setPurchasedFilter } from './actions';
+import { addGrocery, purchaseItem, setPurchasedFilter, setFilter } from './actions';
 import { groceryApp } from './reducers';
 import { createStore } from 'redux';
 
@@ -34,3 +34,18 @@ ReactDOM.render(
   <App />,
   document.getElementById('root')
 );
+
+
+
+
+// {
+    
+//  groceryList: [ { name: "whatever"} ],
+//  purchasedFilter: "SHOW_ALL",
+//  categoryFilter: "SHOW_ALL"
+//  filters: {
+//      purchased: "SHOW_ALL",
+//      category: "SHOW_ALL"
+//  }
+    
+// }
